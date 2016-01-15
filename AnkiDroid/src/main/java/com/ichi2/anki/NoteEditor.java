@@ -871,6 +871,13 @@ public class NoteEditor extends AnkiActivity {
                 showDialogFragment(NoteEditorRescheduleCard.newInstance());
                 return true;
 
+            case R.id.action_preview:
+                Timber.i("NoteEditor:: Preview button pressed");
+                Long cardId = mCurrentEditedCard.getId();
+                Intent previewer = new Intent(this, Previewer.class);
+                previewer.putExtra("currentCardId", cardId);
+                startActivityWithoutAnimation(previewer);
+
             default:
                 return super.onOptionsItemSelected(item);
 
